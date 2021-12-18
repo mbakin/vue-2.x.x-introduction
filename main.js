@@ -31,9 +31,6 @@ Vue.component("product", {
 
           <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton : !inStock }">Add to Cart</button>
 
-          <div class="cart">
-            <p>Cart({{ cart }})</p>
-          </div>
         </div>
       </div>`,
 
@@ -42,7 +39,6 @@ Vue.component("product", {
 					brand: "Vue Mastery",
 					product: "Socks",
 					selectedVariant: 0,
-					link: "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks",
 					onSale: true,
 					details: ["80% cotton", "20% polyester", "Gender-neutral"],
 					variants: [
@@ -59,12 +55,11 @@ Vue.component("product", {
 							variantQuantity: 0,
 						},
 					],
-					cart: 0,
 				};
 				},
 				methods: {
 					addToCart() {
-						this.cart += 1;
+						this.$emit("add-to-cart", this.variants[this.selectedVariant].variantId);
 					},
 					updateProduct(index) {
 						this.selectedVariant = index;
@@ -94,5 +89,11 @@ var app = new Vue({
   el: "#app",
 	data: {
 		premium: true,
+		cart: []
+	},
+	methods: {
+		updateCart(id) {
+			this.cart.push(id);	
+		}
 	}
 });
