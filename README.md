@@ -51,7 +51,7 @@ CDN for Vue.js version 2
 
 You can view the application live here.
 
-**[Live Server](vue-2-x-x-introduction.vercel.app)**
+**[Live Server](https://vue-2-x-x-introduction.vercel.app/)**
 
 
   
